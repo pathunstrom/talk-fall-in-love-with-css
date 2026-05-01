@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      padding: 0.5em;
+      font-size: 24pt;
+    }
+
+    :root {
+        --primary-color: indigo;
+        --contrast-color: gold;
+        --highlight-color: darkgreen;
+        color-scheme: dark light;
+
+    }
+
+    * {
+      background-color: light-dark(var(--contrast-color), var(--primary-color));
+      color: light-dark(var(--primary-color), var(--contrast-color));
+    }
+
+    .second {
+      --primary-color: blue;
+    }
+  </style>
+</head>
+<body>
+  <div class="first">Putting text here.</div>
+  <div class="second">More sample text</div>
+  <div class="third">Final text</div>
+</body>
+</html>
