@@ -18,7 +18,8 @@ Another way to do this is the `:root` pseudo-class.
 It isn't "new" (it was included in the Selectors Level 4 working draft in 2011!)
 It represents the root element of the document, usually `html` but counts as a class for specificity, thus `0-1-0`.
 
-As a demonstration, if we set a `:root` rule with a solid border, and then an `html` rule with a dashed border: 
+As a demonstration, if we set a `:root` rule with a solid border, and then an `html` rule with a dashed border:
+ 
 ```css
 :root {
     border: red solid 5px;

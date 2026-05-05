@@ -22,7 +22,19 @@
     }
 
     .second {
+      font-family: "Source Code Pro", monospace
+      color: red;
       --primary-color: blue;
+    }
+
+    .first::after {
+      content: "I don't exist in the dom, but will be rendered.";
+      display: inline-block;
+      padding-left: 0.5em;
+    }
+
+    div:hover {
+      background-color: red;
     }
   </style>
 </head>

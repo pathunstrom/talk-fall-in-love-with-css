@@ -34,6 +34,15 @@ The bottom is the user-agent.
 
 Inside your author sheet, you can set your own layers using the two forms of the layer at-rule.
 
+```css
+@layer layer_1, layer_2
+
+@layer layer_2 {
+
+	/* */
+}
+```
+
 The statement syntax lets you list your layers in priority order.
 The first layer will have the lowest priority (like the user-agent from sources).
 The last will have the highest.
@@ -42,9 +51,55 @@ The block at-rules are how you set the rules for a given layer.
 
 https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@layer
 
-## Proximity
+### Specificity
 
-TODO: Proximity and scopes
+At this point in the priority list, we have to consider the specificity of a rule.
+
+Specificity is made up of 3 columns of values: ids, classes, and types.
+
+It will be described as 3 values separated by hyphens.
+
+For each column, you count the number of that column in a selector.
+
+```css
+#tool {  } /* 1-0-0 */
+
+
+#tool #handle {  } /* 2-0-0 */
+
+```
+
+The first value is id.
+For each id in a selector (remember, octothorpe), you add one to that column.
+Most of the time, you'll see 1 here, but if you're using a complex selector with children, you might have more.
+
+```css
+.card {  } /* 0-1-0 */
+
+.card:first-child {  } /* 0-2-0 */
+
+
+```
+
+The second column is classes.
+For each class (period), pseudoclass (single colon), and attribute selector (square braces) you add one to the second column.
+
+```css
+div {  } /* 0-0-1 */
+
+div::after {  } /* 0-0-2 */
+
+```
+
+The final column is the type column.
+Remember that types are the different element types in your HTML.
+Pseudo-elements also add to this column!
+
+There's also no value especially for the universal selector (\*) and the :where pseudoclass.
+
+In addition, most combinators have no weight of their own, but produce higher specificity due to their components.
+
+TODO: Examples
 
 ## Order
 
@@ -62,8 +117,14 @@ How it affects the cascade:
 2. user comes next.
 3. Author important styles have the lowest priority.
 
-## Transitions and Animations
+I am also going to quote MDN directly on a section about tips for specificity headaches:
 
-Animation rules take priority over the standard origin placement.
+> Instead of using !important, consider using cascade layers and using low weight specificity throughout your CSS so that styles are easily overridden with slightly more specific rules. Using semantic HTML helps provide anchors from which to apply styling.
 
-CSS transitions take the highest priority of all rules.
+## Other
+
+There's three more rules to specificity that I encourage you to go read up on, but I won't be expanding on.
+
+* CSS transitions
+* CSS animations
+* Scopes and proximity

@@ -1,8 +1,7 @@
-Note: Section headings time targets are accumulation of the subheadings.
-
 1. Introduction (3m)
    1. Speaker Introduction - (1m)
    2. Topic introduction - (2m)
+      1. Small languages (Definitely stretching the definition)
       2. Declarative languages
       3. Contempt Culture
 2. Back To Basics 15
